@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Atividades</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="activity-container">
+    <h1>Atividade 01: Calcular idade em dias</h1>
+    <div class="activity-form">
+      <label for="anos">Anos:</label>
+      <input type="number" id="anos" placeholder="Anos" />
+      <label for="meses">Meses:</label>
+      <input type="number" id="meses" placeholder="Meses" />
+      <label for "dias">Dias:</label>
+      <input type="number" id="dias" placeholder="Dias" />
+      <button id="calcularBotao1">Calcular</button>
+      <p id="resultado1"></p>
+    </div>
+  </div>
+
+  <div class="activity-container">
+    <h1>Atividade 02: Calcular média de notas</h1>
+    <div class="activity-form">
+      <label for="nota1">Nota 1:</label>
+      <input type="number" id="nota1" placeholder="Nota 1" />
+      <label for="nota2">Nota 2:</label>
+      <input type="number" id="nota2" placeholder="Nota 2" />
+      <label for="nota3">Nota 3:</label>
+      <input type="number" id="nota3" placeholder="Nota 3" />
+      <label for="nota4">Nota 4:</label>
+      <input type="number" id="nota4" placeholder="Nota 4" />
+      <button id="calcularBotao2">Calcular</button>
+      <p id="resultado2"></p>
+    </div>
+  </div>
+  
+  <div class="activity-container">
+    <h1>Atividade 03: Números Pares e Ímpares</h1>
+    <div class="activity-form">
+      <label for="numero">Digite um número:</label>
+      <input type="number" id="numero" />
+      <button id="imprimirBotao3">Imprimir</button>
+      <p id="resultado3"></p>
+    </div>
+  </div>
+  
+  <div class="activity-container">
+    <h1>Atividade 04: Usuário e senha</h1>
+    <div class="activity-form">
+      <label for="usuario">Usuário:</label>
+      <input type="text" id="usuario" />
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" />
+      <button id="loginBotao">Entrar</button>
+      <p id="resultado4"></p>
+    </div>
+  </div>
+  
+  <div class="activity-container">
+    <h1>Atividade 05: Validação de Senha</h1>
+    <div class="activity-form">
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" />
+      <button id="validarBotao">Validar Senha</button>
+      <p id="resultado5"></p>
+    </div>
+  </div>
+  
+  <div class="activity-container">
+    <h1>Atividade 06: Conversor de temperatura</h1>
+    <div class="activity-form">
+      <label for="fahrenheitEntrada">Fahrenheit:</label>
+      <input type="text" id="fahrenheitEntrada">
+      <button onclick="converterParaCelsius()">Converter</button>
+    </div>
+    <div class="resultado6">
+        <p>Resultado em Celsius: <span id="celsiusSaida"></span> °C</p>
+    </div>
+  </div>
+  
+  <div class="activity-container">
+    <h1>Atividade 07: Bhaskara</h1>
+    <div class="activity-form">
+        <label for="aEntrada">A:</label>
+        <input type="text" id="aEntrada">
+        <label for="bEntrada">B:</label>
+        <input type="text" id="bEntrada">
+        <label for="cEntrada">C:</label>
+        <input type="text" id="cEntrada">
+        <button onclick="resolverEquacao()">Resolver</button>
+    </div>
+    <div class="resultado7">
+        <p>Resultado:</p>
+        <p>x' = <span id="x1Saida"></span></p>
+        <p>x'' = <span id="x2Saida"></span></p>
+    </div>
+  </div>
+
+  <div class="activity-container">
+    <h1>Atividade 08: Vogais e espaços em branco</h1>
+    <div class="activity-form">
+        <label for="frase">Digite uma frase:</label>
+        <input type="text" id="frase">
+        <button onclick="contarVogaisEspacos()">Contar</button>
+        <p id="resultado8"></p>
+    </div>
+  </div>
+
+  <div class="activity-container">
+    <h1>Atividade 09: Salário vendedor</h1>
+    <div class="activity-form">
+        <label for="salarioFixo">Salário Fixo:</label>
+        <input type="number" id="salarioFixo">
+        <label for="comissaoPorCarro">Comissão por Carro Vendido (%):</label>
+        <input type="number" id="comissaoPorCarro">
+        <label for="qtdCarrosVendidos">Quantidade de Carros Vendidos:</label>
+        <input type="number" id="qtdCarrosVendidos">
+        <label for="valorCarroVendido">Valor de Cada Carro Vendido:</label>
+        <input type="number" id="valorCarroVendido">
+        <button onclick="calcularSalarioVendedor()">Calcular Salário</button>
+        <p id="resultado9"></p>
+    </div>
+  </div>  
+
+  <div class="activity-container">
+  <h1>Atividade 10: Joio de trigo</h1>
+  <div class="activity-form">
+    <label for="joioETrigo">Palavras separadas por espaço:</label>
+    <input type="text" id="joioETrigo">
+    <button data-atividade="10">Separar Palavras</button>
+    <p id="resultado10"></p>
+  </div>
+</div>
+
+  <div class="activity-container">
+    <h1>Atividade 11: Investimento</h1>
+    <div class="activity-form">
+        <label for="capitalInicial">Capital Inicial (R$):</label>
+        <input type="number" id="capitalInicial">
+        <label for="taxaJuros">Taxa de Juros Mensal (%):</label>
+        <input type="number" id="taxaJuros">
+        <label for="tempoInvestimento">Tempo do Investimento (meses):</label>
+        <input type="number" id="tempoInvestimento">
+        <button onclick="calcularMontante()">Calcular Montante</button>
+        <p id="resultado11"></p>
+    </div>
+  </div>
+   
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .activity-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+  
+  .activity-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .activity-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .activity-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .activity-form input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+  }
+  
+  .activity-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .activity-form button:hover {
+    background-color: #0056b3;
+  }
+  
