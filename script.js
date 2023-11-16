@@ -1,28 +1,48 @@
-function calcularIdadeEmDias() {
+function calcularIdadeEmDias() 
+{
   const anos = parseInt(document.getElementById('anos').value);
   const meses = parseInt(document.getElementById('meses').value);
   const dias = parseInt(document.getElementById('dias').value);
+
+  if (isNaN(anos) || isNaN(meses) || isNaN(dias)) 
+  {
+    alert('Por favor, preencha todos os campos antes de calcular.');
+    return;
+  }
 
   const totalDias = anos * 365 + meses * 30 + dias;
 
   document.getElementById('resultado1').textContent = `Sua idade em dias é: ${totalDias} dias`;
 }
 
+
 function calcularMediaDeNotas() {
   const nota1 = parseFloat(document.getElementById('nota1').value);
-  const nota2 = parseFloat(document.getElementById('nota2').value);
-  const nota3 = parseFloat(document.getElementById('nota3').value);
-  const nota4 = parseFloat(document.getElementById('nota4').value);
+ const nota2 = parseFloat(document.getElementById('nota2').value);
+ const nota3 = parseFloat(document.getElementById('nota3').value);
+ const nota4 = parseFloat(document.getElementById('nota4').value);
 
-  const maiorNota = Math.max(nota3, nota4);
+ if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+   alert("Os campos de Nota 1, Nota 2 e Nota 3 são obrigatórios e devem ser preenchidos.");
+   return;
+ }
 
-  const media = (nota1 + nota2 + maiorNota) / 3;
 
-  document.getElementById('resultado2').textContent = `A média das notas é: ${media.toFixed(2)}`;
+ const isValidNota4 = !isNaN(nota4);
+
+ 
+ const maiorNota = isValidNota4 ? Math.max(nota3, nota4) : nota3;
+
+
+ const media = (nota1 + nota2 + maiorNota) / 3;
+
+
+ document.getElementById('resultado2').textContent = `A média das notas é: ${media.toFixed(2)}`;
 }
 
-document.getElementById('calcularBotao1').addEventListener('click', calcularIdadeEmDias);
-document.getElementById('calcularBotao2').addEventListener('click', calcularMediaDeNotas);
+document.getElementById('calculateButton').addEventListener('click', calcularMedia);
+
+
 
 function imprimirNumerosParesEImpares() {
   const numero = parseInt(document.getElementById('numero').value);
@@ -48,9 +68,16 @@ function imprimirNumerosParesEImpares() {
 
 document.getElementById('imprimirBotao3').addEventListener('click', imprimirNumerosParesEImpares);
 
+
+
 function verificarLogin() {
   const usuario = document.getElementById('usuario').value;
   const senha = document.getElementById('senha').value;
+
+  if (usuario === '' || senha === '') {
+    document.getElementById('result').textContent = 'Por favor, preencha todos os campos.';
+    return;
+  }
 
   if (usuario === 'KUNDEN' && senha === 'KUNDENJS2023') {
     document.getElementById('resultado4').textContent = 'Login efetuado com sucesso.';
@@ -59,7 +86,10 @@ function verificarLogin() {
   }
 }
 
-document.getElementById('loginBotao').addEventListener('click', verificarLogin);
+document.getElementById('loginButton').addEventListener('click', verificarLogin);
+
+
+
 
 function validarSenha() {
   const senha = document.getElementById('senha').value;
@@ -96,6 +126,8 @@ function validarSenha() {
 
 document.getElementById('validarBotao').addEventListener('click', validarSenha);
 
+
+
 function converterParaCelsius() {
   const fahrenheitEntrada = parseFloat(document.getElementById('fahrenheitEntrada').value);
 
@@ -105,6 +137,8 @@ function converterParaCelsius() {
 }
 
 document.querySelector('button[data-atividade="6"]').addEventListener('click', converterParaCelsius);
+
+
 
 function resolverEquacao() {
   const a = parseFloat(document.getElementById('aEntrada').value);
@@ -130,6 +164,8 @@ function resolverEquacao() {
 
 document.querySelector('button[data-atividade="7"]').addEventListener('click', resolverEquacao);
 
+
+
 function contarVogaisEspacos() {
   const frase = document.getElementById('frase').value;
   const resultado = document.getElementById('resultado8');
@@ -144,6 +180,8 @@ function contarVogaisEspacos() {
 }
 
 document.querySelector('button[data-atividade="8"]').addEventListener('click', contarVogaisEspacos);
+
+
 
 function calcularSalarioVendedor() {
   const salarioFixo = parseFloat(document.getElementById('salarioFixo').value);
