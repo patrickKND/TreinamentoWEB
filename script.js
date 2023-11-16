@@ -40,7 +40,7 @@ function calcularMediaDeNotas() {
  document.getElementById('resultado2').textContent = `A média das notas é: ${media.toFixed(2)}`;
 }
 
-document.getElementById('calculateButton').addEventListener('click', calcularMedia);
+document.getElementById('calculateButton').addEventListener('click', calcularMediaDeNotas);
 
 
 
