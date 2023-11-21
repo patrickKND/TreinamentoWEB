@@ -89,46 +89,40 @@ document.getElementById('loginBotao').addEventListener('click', verificarLogin);
 
 
 
-
 function validarSenha() {
-  const senha = document.getElementById('senha').value;
+  const password = document.getElementById('password').value;
 
-  const possuiNumero = /\d/.test(senha);
-  const possuiLetra = /[a-zA-Z]/.test(senha);
-  const semEspacos = !/\s/.test(senha);
-  const possuiTamanhoValido = senha.length >= 8 && senha.length <= 10;
+  const hasNumber = /\d/.test(password);
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const noSpaces = !/\s/.test(password);
+  const isValidLength = password.length >= 8 && password.length <= 10;
 
-  if (possuiNumero && possuiLetra && semEspacos && possuiTamanhoValido) {
-    exibirResultado('Senha válida.');
+  if (hasNumber && hasLetter && noSpaces && isValidLength) {
+    document.getElementById('result').textContent = 'Senha válida.';
   } else {
-    let mensagemErro = 'Senha inválida.';
+    let errorMessage = 'Senha inválida.';
 
-    if (!possuiNumero) {
-      mensagemErro += ' A senha deve conter pelo menos um número.';
+    if (!hasNumber) {
+      errorMessage += ' A senha deve conter pelo menos um número.';
     }
 
-    if (!possuiLetra) {
-      mensagemErro += ' A senha deve conter pelo menos uma letra.';
+    if (!hasLetter) {
+      errorMessage += ' A senha deve conter pelo menos uma letra.';
     }
 
-    if (!semEspacos) {
-      mensagemErro += ' A senha não pode conter espaços em branco.';
+    if (!noSpaces) {
+      errorMessage += ' A senha não pode conter espaços em branco.';
     }
 
-    if (!possuiTamanhoValido) {
-      mensagemErro += ' A senha deve ter entre 8 e 10 caracteres.';
+    if (!isValidLength) {
+      errorMessage += ' A senha deve ter entre 8 e 10 caracteres.';
     }
 
-    exibirResultado(mensagemErro);
+    document.getElementById('result').textContent = errorMessage;
   }
 }
 
-function exibirResultado(mensagem) {
-  document.getElementById('resultado5').textContent = mensagem;
-}
-
-document.getElementById('validarBotao').addEventListener('click', validarSenha);
-
+document.getElementById('validateButton').addEventListener('click', validarSenha2);
 
 
 
