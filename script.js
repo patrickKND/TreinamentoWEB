@@ -228,32 +228,26 @@ function calcularSalarioVendedor() {
 document.querySelector('button[data-atividade="9"]').addEventListener('click', calcularSalarioVendedor);
 
 
-let joioETrigo = [
-    "joio", "trigo", "trigo", "joio", "trigo", "joio", "joio", "joio", "joio", "trigo", "trigo", "joio",
-    "joio", "joio", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo",
-    "trigo", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "trigo", "trigo", "joio", "joio",
-    "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio", "joio",
-    "joio", "joio", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo",
-    "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo", "joio", "joio", "joio",
-    "joio", "joio", "joio", "joio", "joio", "joio", "joio", "trigo", "trigo", "trigo", "trigo", "trigo", "trigo",
-    "trigo", "trigo", "trigo", "joio", "joio", "joio", "joio", "joio", "joio", "trigo", "joio", "joio", "joio",
-    "joio", "joio", "trigo", "trigo", "trigo", "trigo", "joio", "joio", "joio", "joio", "joio", "joio", "joio",
-    "trigo", "trigo", "trigo", "joio", "trigo", "joio", "joio", "joio"
-];
 
 function separarPalavras() {
-  // Filtrar palavras "joio" e "trigo" do array "joioETrigo"
-  const palavrasJoio = joioETrigo.filter(palavra => palavra === "joio");
-  const palavrasTrigo = joioETrigo.filter(palavra => palavra === "trigo");
+  const inputElement = document.getElementById('joioETrigoInput');
+  const palavras = inputElement.value.split(',').map(palavra => palavra.trim());
 
-  // Exibir o resultado
-  const resultado = `Lista de Joio (${palavrasJoio.length} palavras): ${palavrasJoio.join(", ")}<br>`;
-  resultado += `Lista de Trigo (${palavrasTrigo.length} palavras): ${palavrasTrigo.join(", ")}`;
-  document.getElementById("resultado10").innerHTML = resultado;
+  let listaJoio = [];
+  let listaTrigo = [];
+
+  for (let palavra of palavras) {
+    if (palavra.toLowerCase() === 'joio') {
+      listaJoio.push(palavra);
+    } else if (palavra.toLowerCase() === 'trigo') {
+      listaTrigo.push(palavra);
+    }
+  }
+
+  const resultado = document.getElementById('resultado22');
+  resultado.innerHTML = `Lista de Joio (${listaJoio.length} palavras): ${listaJoio.join(', ')}<br>`;
+  resultado.innerHTML += `Lista de Trigo (${listaTrigo.length} palavras): ${listaTrigo.join(', ')}`;
 }
-
-// Adicionar um ouvinte de evento ao botão
-document.querySelector('[data-atividade="10"]').addEventListener('click', separarPalavras);
 
 
 
