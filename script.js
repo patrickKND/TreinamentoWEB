@@ -74,11 +74,10 @@ function verificarLogin() {
   const usuario = document.getElementById('usuario').value;
   const senha = document.getElementById('senha').value;
 
-  if (usuario === '' || senha === '') {
-    document.getElementById('result').textContent = 'Por favor, preencha todos os campos.';
-    return;
-  }
-
+  if (isNaN(usuario) || isNaN(senha)) {
+    alert("Os campos de Usuário e Senha são obrigatórios e devem ser preenchidos.");
+    return;}
+    
   if (usuario === 'KUNDEN' && senha === 'KUNDENJS2023') {
     document.getElementById('resultado4').textContent = 'Login efetuado com sucesso.';
   } else {
@@ -86,7 +85,7 @@ function verificarLogin() {
   }
 }
 
-document.getElementById('loginButton').addEventListener('click', verificarLogin);
+document.getElementById('loginBotao').addEventListener('click', verificarLogin);
 
 
 
@@ -100,7 +99,7 @@ function validarSenha() {
   const possuiTamanhoValido = senha.length >= 8 && senha.length <= 10;
 
   if (possuiNumero && possuiLetra && semEspacos && possuiTamanhoValido) {
-    document.getElementById('resultado5').textContent = 'Senha válida.';
+    exibirResultado('Senha válida.');
   } else {
     let mensagemErro = 'Senha inválida.';
 
@@ -120,21 +119,33 @@ function validarSenha() {
       mensagemErro += ' A senha deve ter entre 8 e 10 caracteres.';
     }
 
-    document.getElementById('resultado5').textContent = mensagemErro;
+    exibirResultado(mensagemErro);
   }
+}
+
+function exibirResultado(mensagem) {
+  document.getElementById('resultado5').textContent = mensagem;
 }
 
 document.getElementById('validarBotao').addEventListener('click', validarSenha);
 
 
 
+
 function converterParaCelsius() {
   const fahrenheitEntrada = parseFloat(document.getElementById('fahrenheitEntrada').value);
+
+  if (isNaN(fahrenheitEntrada)) {
+    
+    alert('Por favor, preencha o campo Fahrenheit antes de converter.');
+    return; 
+  }
 
   const celsius = (fahrenheitEntrada - 32) * 5/9;
 
   document.getElementById('celsiusSaida').textContent = celsius.toFixed(2);
 }
+
 
 document.querySelector('button[data-atividade="6"]').addEventListener('click', converterParaCelsius);
 
@@ -144,6 +155,10 @@ function resolverEquacao() {
   const a = parseFloat(document.getElementById('aEntrada').value);
   const b = parseFloat(document.getElementById('bEntrada').value);
   const c = parseFloat(document.getElementById('cEntrada').value);
+
+  if (isNaN(a) || isNaN(b) || isNaN(c)) {
+    alert("Os campos A, B e C são obrigatórios e devem ser preenchidos.");
+    return;}
 
   const discriminante = b * b - 4 * a * c;
 
@@ -170,8 +185,14 @@ function contarVogaisEspacos() {
   const frase = document.getElementById('frase').value;
   const resultado = document.getElementById('resultado8');
 
+  if (frase.trim() === '') {
+    alert('Por favor, preencha o campo de frase antes de contar.');
+    return;
+  }
+
   const vogais = frase.match(/[aeiouAEIOU]/g);
   const espacos = frase.match(/\s/g);
+
 
   const numVogais = vogais ? vogais.length : 0;
   const numEspacos = espacos ? espacos.length : 0;
@@ -188,13 +209,17 @@ function calcularSalarioVendedor() {
   const comissaoPorCarro = parseFloat(document.getElementById('comissaoPorCarro').value) / 100;
   const qtdCarrosVendidos = parseInt(document.getElementById('qtdCarrosVendidos').value);
   const valorCarroVendido = parseFloat(document.getElementById('valorCarroVendido').value);
+  
+  if (isNaN(salarioFixo) || isNaN(comissaoPorCarro) || isNaN(qtdCarrosVendidos) || isNaN(valorCarroVendido)) {
+    alert("Todos os campos devem ser preenchidos antes de realizar o cálculo.");
+    return;}
 
   const valorComissao = qtdCarrosVendidos * valorCarroVendido * comissaoPorCarro;
   const valorVendas = qtdCarrosVendidos * valorCarroVendido;
 
   let valorComissaoExtra = 0;
-  if (valorVendas > 100000) {
-    valorComissaoExtra = 0.075 * (valorVendas - 100000);
+  if (valorVendas > 99999) {
+    valorComissaoExtra = 0.075 * (valorVendas);
   }
 
   const salarioFinal = salarioFixo + valorComissao + valorComissaoExtra;
@@ -242,6 +267,10 @@ function calcularMontante() {
   const capitalInicial = parseFloat(document.getElementById('capitalInicial').value);
   const taxaJuros = parseFloat(document.getElementById('taxaJuros').value) / 100;
   const tempoInvestimento = parseInt(document.getElementById('tempoInvestimento').value);
+
+  if (isNaN(capitalInicial) || isNaN(taxaJuros) || isNaN(tempoInvestimento)) {
+    alert("Todos os campos devem ser preenchidos antes de realizar o cálculo.");
+    return;}
 
   const montante = capitalInicial * Math.pow(1 + taxaJuros, tempoInvestimento);
   const montanteFormatado = montante.toFixed(2);
